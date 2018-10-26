@@ -1,5 +1,4 @@
 const Base = require('./base.js');
-const FormData=require('form-data')
 module.exports = class extends Base {
      async  fileAction(){
            try {
@@ -7,7 +6,6 @@ module.exports = class extends Base {
                console.log(typeof data)
                think.logger.info("传过来的参数:",data);
                let formData=think.fileImage(this,'image');
-                //think.logger.info("图片:",formData)
                  let midData=think.makeFormData(data,formData)
                think.logger.info("传给其他接口的formdata:",midData)
                let backData=await think.request(midData);
