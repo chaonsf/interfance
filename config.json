@@ -1,0 +1,14 @@
+{
+    "back":{
+        "KEY":"SAASINSU",
+        "IV":"520Gg520",
+       "URL":"http://139.196.108.200/BFInsuredPlatInterface"
+    },
+    "DB_NAME":"OA_PROD",
+    "before":{
+        "privateKey":"123123"
+    },
+    "separator":"//"
+
+    
+}
