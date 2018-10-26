@@ -35,5 +35,27 @@ module.exports = class extends Base {
             })
          }
      }
+     async jsonAction(){
+        try {
+            await think.isNullSession(this);
+            let postData=this.post();
+            think.logger.info("接收到前台的参数:",postData);
+            let obj={
+             "DB_NAME":think.parsed('DB_NAME'),
+             "EHUSER":postData.EHUSER?postData.EHUSER:await think.readSession(this,"DPPS_KY")
+            }
+ 
+            let arr=Object.assign(obj,postData);
+            think.logger.info("给后台的参数:",arr)
+            let data=await think.request(arr);
+             this.json(data)
+        } catch (error) {
+         think.logger.error(error.stack)
+         this.json({
+           RETURN_CODE:"99",
+           RETURN_MESSAGE:error.message 
+         })
+        }
+     }
  
 };
